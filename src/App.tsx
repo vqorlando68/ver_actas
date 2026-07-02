@@ -567,12 +567,7 @@ function App() {
             <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
           </div>
 
-          {/* Load Demo Data if none loaded */}
-          {patients.length === 0 && (
-            <button className="btn-demo" onClick={loadDemoData}>
-              <FileSpreadsheet size={16} /> Cargar Demo
-            </button>
-          )}
+
 
           {/* Theme switcher */}
           <button className="icon-btn" onClick={toggleTheme} aria-label="Toggle Theme">
