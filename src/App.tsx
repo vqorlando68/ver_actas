@@ -25,7 +25,6 @@ import {
   Download
 } from 'lucide-react';
 import type { Patient, DatosActa } from './types';
-import demoPatients from './data/demo_patients.json';
 import './App.css';
 
 // Checkbox items for visual filtering
@@ -106,18 +105,6 @@ function App() {
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
-
-  // Helper to load mock demo data
-  const loadDemoData = () => {
-    const typedDemo = (demoPatients as any[]).map(p => ({
-      identificacion: p.identificacion,
-      nombre_completo: p.nombre_completo,
-      nombre_convenio: p.nombre_convenio,
-      datos_acta: p.datos_acta as DatosActa | null
-    }));
-    setPatients(typedDemo);
-    setSelectedPatientIndex(0);
   };
 
   // Excel parser
