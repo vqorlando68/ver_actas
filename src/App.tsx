@@ -229,8 +229,8 @@ function App() {
     switch (level) {
       case 1:
         return (
-          <span className="risk-badge risk-level-1">
-            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-low)' }}></span> Riesgo: Bajo (1)
+          <span className="risk-badge risk-level-3">
+            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-high)' }}></span> Riesgo: Alto (1)
           </span>
         );
       case 2:
@@ -241,14 +241,14 @@ function App() {
         );
       case 3:
         return (
-          <span className="risk-badge risk-level-3">
-            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-high)' }}></span> Riesgo: Alto (3)
+          <span className="risk-badge risk-level-1">
+            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-low)' }}></span> Riesgo: Bajo (3)
           </span>
         );
       case 4:
         return (
           <span className="risk-badge risk-level-4">
-            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-very-high)' }}></span> Riesgo: Muy Alto (4)
+            <span className="risk-dot" style={{ backgroundColor: 'var(--risk-very-high)' }}></span> Riesgo: Crítico (4)
           </span>
         );
       default:
@@ -827,7 +827,13 @@ function App() {
                           {visibleFields.nivel_riesgo && (
                             <div className="kv-item">
                               <span className="kv-label">Nivel de Riesgo</span>
-                              <span className="kv-value">{activePatient.datos_acta.nivel_riesgo}</span>
+                              <span className="kv-value">
+                                {activePatient.datos_acta.nivel_riesgo === 1 ? 'Alto (1)' :
+                                 activePatient.datos_acta.nivel_riesgo === 2 ? 'Medio (2)' :
+                                 activePatient.datos_acta.nivel_riesgo === 3 ? 'Bajo (3)' :
+                                 activePatient.datos_acta.nivel_riesgo === 4 ? 'Crítico (4)' :
+                                 activePatient.datos_acta.nivel_riesgo}
+                              </span>
                             </div>
                           )}
                         </div>
