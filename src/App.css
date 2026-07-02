@@ -1,0 +1,877 @@
+/* Dashboard Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: var(--glass-blur);
+  background-color: var(--glass-bg);
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-logo {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, var(--text-primary), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Theme Switcher and Control Buttons */
+.icon-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.icon-btn:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--primary);
+}
+
+/* File Upload Button / Input */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-upload {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-upload:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.btn-demo {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-demo:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--primary);
+}
+
+/* Main Dashboard Body */
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 73px);
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem 0.6rem 2.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Patient List */
+.section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.patient-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.patient-item:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.patient-item.active {
+  background-color: var(--primary-light);
+  border-color: var(--primary-border);
+}
+
+.patient-item-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.patient-item-id {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.patient-item-convenio {
+  font-size: 0.7rem;
+  color: var(--primary);
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.no-results {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Fields Filter List */
+.fields-filter-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.fields-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.field-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  padding: 0.25rem 0;
+  transition: var(--transition);
+}
+
+.field-checkbox-label:hover {
+  color: var(--text-primary);
+}
+
+.field-checkbox-label input[type=checkbox] {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Detail Panel */
+.detail-panel {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 73px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Patient Banner Header Card */
+.patient-banner {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border: var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.patient-banner::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.patient-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.patient-badge-id {
+  font-size: 0.75rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+  width: fit-content;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.patient-banner-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-top: 0.25rem;
+}
+
+.patient-banner-convenio {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.patient-banner-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+/* Patient Risk Badge */
+.risk-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.risk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.risk-level-1 {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--risk-low);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.risk-level-2 {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--risk-medium);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.risk-level-3 {
+  background-color: rgba(249, 115, 22, 0.1);
+  color: var(--risk-high);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+.risk-level-4 {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--risk-very-high);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.risk-level-null {
+  background-color: rgba(148, 163, 184, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* Navigation and Export Buttons */
+.patient-navigation-export {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-nav {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+  border-color: var(--text-tertiary);
+}
+
+.btn-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-action {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-action:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.25);
+}
+
+/* Clinical Tabs Header */
+.clinical-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  padding-bottom: 1px;
+}
+
+.clinical-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clinical-tab:hover {
+  color: var(--text-primary);
+}
+
+.clinical-tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* Clinical Tab Content Panel */
+.clinical-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Patient Detail Cards */
+.info-card {
+  background-color: var(--bg-secondary);
+  border: var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-card-icon {
+  color: var(--primary);
+}
+
+.info-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+/* Key Value Grid */
+.kv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.kv-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.kv-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.kv-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.kv-value.null-value {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Text Block / Textarea formatting */
+.text-block {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: pre-line;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Table styling */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-secondary);
+}
+
+.clinical-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.clinical-table th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.clinical-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.clinical-table tr:last-child td {
+  border-bottom: none;
+}
+
+.clinical-table tr:hover td {
+  background-color: var(--bg-primary);
+}
+
+/* PDF Open Button */
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-pdf:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Welcome Panel (before load) */
+.welcome-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-secondary);
+  margin: auto;
+  max-width: 600px;
+  box-shadow: var(--card-shadow);
+  gap: 1.5rem;
+}
+
+.welcome-icon {
+  color: var(--primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.welcome-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Print Setup Container (only visible when window.print() is called) */
+.print-only-container {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .dashboard-body {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    max-height: none;
+  }
+  
+  .detail-panel {
+    max-height: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    text-align: center;
+  }
+  .header-title-container {
+    justify-content: center;
+  }
+  .header-actions {
+    justify-content: center;
+  }
+  
+  .patient-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .patient-banner-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .patient-navigation-export {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .btn-action {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* PRINT MEDIA STYLES - Hides interface elements and prints clinical profile clean */
+@media print {
+  /* Page breaks and clean sheet background */
+  body, .app-container, #root {
+    background: #fff !important;
+    color: #000 !important;
+    overflow: visible !important;
+    min-height: auto !important;
+  }
+  
+  /* Hide all dashboard/UI elements */
+  .app-header, 
+  .sidebar, 
+  .patient-navigation-export, 
+  .clinical-tabs, 
+  .btn-pdf,
+  .patient-banner-actions button,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Make the detail panel full width */
+  .dashboard-body {
+    display: block !important;
+  }
+  
+  .detail-panel {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  
+  /* Format banner professionally for print */
+  .patient-banner {
+    background: #fff !important;
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  
+  .patient-banner-name {
+    font-size: 1.5rem !important;
+    color: #000 !important;
+  }
+  
+  .patient-banner-convenio {
+    color: #333 !important;
+  }
+  
+  .risk-badge {
+    border: 1px solid #000 !important;
+    background: none !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .risk-dot {
+    background-color: #000 !important;
+  }
+  
+  /* Show ALL tabs sequentially during print */
+  /* We will implement a special CSS structure that exposes all clinical sections
+     by bypassing the tab display rule and rendering them on printing */
+  .clinical-content {
+    display: block !important;
+    animation: none !important;
+  }
+  
+  /* When printing, make sure all clinical cards are shown, not just the active tab! */
+  .clinical-tab-section {
+    display: block !important;
+    page-break-inside: avoid;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Make cards look clean and flat (black/white friendly) */
+  .info-card {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    padding: 1.25rem !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .info-card-header {
+    border-bottom: 2px solid #000 !important;
+    color: #000 !important;
+  }
+  
+  .info-card-icon {
+    display: none !important;
+  }
+  
+  .info-card-title {
+    color: #000 !important;
+    font-size: 1.1rem !important;
+  }
+  
+  /* Tables formatting for black/white print */
+  .table-wrapper {
+    border: 1px solid #000 !important;
+    border-radius: 0 !important;
+  }
+  
+  .clinical-table th {
+    background-color: #f1f5f9 !important;
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+  }
+  
+  .clinical-table td {
+    color: #000 !important;
+    border-bottom: 1px solid #ccc !important;
+  }
+  
+  .text-block {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    color: #000 !important;
+  }
+}
