@@ -56,7 +56,6 @@ const FIELDS_CONFIG: FieldConfig[] = [
   { key: 'antecedentes', label: 'Antecedentes' },
   { key: 'metricas_relevantes', label: 'Métricas Relevantes' },
   { key: 'historias_anteriores', label: 'Historias Anteriores' },
-  { key: 'atenciones_programadas', label: 'Atenciones Programadas' },
   { key: 'prog_especialidad_acta', label: 'Programación de Especialidades' },
   { key: 'diagnosticos', label: 'Diagnósticos' },
   { key: 'medicamentos_prescritos', label: 'Medicamentos Prescritos' }
@@ -880,7 +879,7 @@ function App() {
               <FileSpreadsheet className="welcome-icon" size={64} />
               <h2 className="welcome-title">Bienvenido al Visualizador de Actas</h2>
               <p className="welcome-desc">
-                Cargue un archivo Excel que contenga los campos de actas médicas o use nuestros datos de demostración preinstalados para explorar la aplicación.
+                Cargue un archivo Excel que contenga los campos de actas médicas.
               </p>
 
               <div className="welcome-actions">
@@ -890,9 +889,7 @@ function App() {
                   </button>
                   <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
                 </div>
-                <button className="btn-demo" onClick={loadDemoData}>
-                  <Download size={16} /> Cargar Datos de Demostración
-                </button>
+
               </div>
             </div>
           )}
