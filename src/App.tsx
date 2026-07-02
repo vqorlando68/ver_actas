@@ -567,8 +567,6 @@ function App() {
             <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
           </div>
 
-
-
           {/* Theme switcher */}
           <button className="icon-btn" onClick={toggleTheme} aria-label="Toggle Theme">
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
